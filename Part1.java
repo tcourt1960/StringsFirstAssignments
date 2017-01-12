@@ -2,8 +2,8 @@
 /**
  * Write a description of Part1 here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tom Courtney
+ * @version Jan 11, 2017
  */
 public class Part1 {
     public String FindSimpleGene(String dna){
