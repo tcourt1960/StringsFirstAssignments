@@ -21,10 +21,20 @@ public class Part1 {
                 return "";
             }
         
-        result = dna.substring(startIndex,tailIndex+3);
-        
-        
-        return result;
+            while (tailIndex != -1) {
+            //Check if (tailIndex - startIndex) is a multiple of 3
+            if((tailIndex - startIndex) % 3 == 0) {
+               //If so, the text between startIndex and tailIndex + 3 is your answer
+               return dna.substring(startIndex, tailIndex +3);
+            }
+            //If not, update currIndex to the index of the next TAA, starting from (currIndex+1)
+            else {
+                  tailIndex = dna.indexOf("TAA", tailIndex + 1);
+            }
+        }
+        //Your answer is the empty string
+        return "";
+       
     }
     
     
@@ -49,13 +59,13 @@ public class Part1 {
         System.out.println("Gene is " + gene);    
     
     //Test 4: DNA with ATG&TAA and the substring between them is a multiple of 3
-        dna = "AATGSGTAATCGTTAATCG";
+        dna = "AATGSGGTAATCGTTAATCG";
         System.out.println("DNA with ATG and TAA correct mod3 " + dna);
         gene = FindSimpleGene(dna);
         System.out.println("Gene is " + gene);    
     
     //Test 5" DNA with ATG&TAA and the substring between them is not a multiple of 3
-    dna = "AATGSGTAATCGTTAATCG";     
+    dna = "AATGSGTAATCGTTAGTCG";     
     //dna = "AATGSGTAATCGTCTAATCG";
         System.out.println("DNA with ATG and TAA incorrect mod3 " + dna);
         gene = FindSimpleGene(dna);
